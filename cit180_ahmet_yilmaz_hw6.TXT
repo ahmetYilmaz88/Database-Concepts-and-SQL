@@ -1,0 +1,77 @@
+2. 
+Movie (MovieID, Title, Date_of_Release, Original_Language, Category)
+Primary Key: MovieID
+
+Movie Performer (Movie_Performer_ID, Performer_Name, Performer_DOB, Movie_Title, Movie_Date_of_Release, MovieID)
+Primary Key: Movie_Performer_ID
+Foreign Key: MovieID references Movie
+
+Performer (PerformerID, Full_Name, Date_of_Birth, Gender, Country_of_Birth, MovieID, Movie_Performer_ID)
+Primary Key: PerformerID
+Foreign Key: MovieID references Movie
+Foreign Key: Movie_Performer_ID references Movie Performer
+
+3.
+JOBS (JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY)
+Primary Key: JOB_ID
+
+JOB_HISTORY (EMPLOYEE_ID, START_DATE, END_DATE, JOB_ID, DEPARTMENT_ID)
+Primary Key: START_DATE
+Foreign Key: JOB_ID references JOBS
+Foreign Key: EMPLOYEE_ID references EMPLOYEES
+Foreign Key: DEPARTMENT_ID references DEPARTMENTS
+
+EMPLOYEES (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID)
+Primary Key: EMPLOYEE_ID
+Foreign Key: JOB_ID references JOBS
+Foreign Key: DEPARTMENT_ID references DEPARTMENTS
+
+DEPARTMENTS (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
+Primary Key: DEPARTMENT_ID
+Foreign Key: LOCATION_ID references LOCATIONS
+
+REGIONS (REGION_ID, REGION_NAME, COUNTRY_ID)
+Primary Key: REGION_ID
+Foreign Key: COUNTRY_ID references COUNTRIES
+
+COUNTRIES (COUNTRY_ID, COUNTRY_NAME, REGION_ID)
+Primary Key: COUNTRY_ID
+Foreign Key: REGION_ID references REGIONS
+
+LOCATIONS ( LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID)
+Primary Key: LOCATION_ID
+Foreign Key: COUNTRY_ID references COUNTRIES
+
+4.
+CREATE TABLE REQUIREMENTS (credits float NOT NULL, degree_name varchar(200) NOT NULL)
+Primary Key: credits
+
+5.
+Column Name (Student_ID, graduation_date, first_name, last_name, credits)
+KEY TYPE (Primary Key: Student_ID, Foreign Key: graduation_date)
+Nulls/Unique (PK Unique, FK Nulls)
+FK Column (graduation_date, first_name, last_name, credits)
+Datatype ( Student_ID number, graduation_date date, last_name varchar, first_name varchar, credits number)
+Length ( Student_ID 6, credits 3)
+
+6.
+CREATE TABLE graduate_candidate;
+
+7.
+CREATE TABLE MYDATA (id int(50), fname varchar(200), lname varchar(200));
+INSERT INTO MYDATA (fname,lname)
+VALUES('Ahmet','YILMAZ');
+INSERT INTO MYDATA (fname,lname)
+VALUES('John','Smith');
+
+8.
+ALTER TABLE MYDATA ADD gender varchar(100), middle_initial varchar(100);
+
+9.
+ALTER TABLE MYDATA ADD CONSTRAINT MY_ID PRIMARYKEY(ID);
+
+10.
+SELECT*
+FROM MYDATA
+
+

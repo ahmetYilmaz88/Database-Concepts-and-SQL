@@ -1,0 +1,131 @@
+Part1
+
+Select
+From 
+Where
+Join
+On
+And
+Between
+Or
+Group By
+Having
+
+PART 2
+
+1.
+Select firstname, lastname
+From Customer
+Where State="Minnesota"
+Order By lastname;
+
+2.
+Select firstname, lastname
+From Customer 
+Where lower(lastname) like '__d%';
+
+3.
+Select *
+From Sale
+Where SaleID NOT IN 
+		(Select SaleID
+		From Sale
+		Where Tax+Shipping > 15);
+
+4.
+Select DateOfSale, SUM(Tax) AS SUM, shipping
+From Sale
+Where DateOfSale BETWEEN 'Dec-20-2015'
+AND 'Dec-25-2015'
+
+5.
+Select firstname, lastname, city
+From Manufacturer
+Where city= 'C__%';
+
+6.
+Select ProductName
+From Manufacturer M
+Join Product P
+On M.ManfID=P.ManfID
+Join Order O
+On P.ProductID= O.ProductID
+Where State= 'Washington'
+Order By ProductName
+
+7.
+Select firstname, lastname
+From Customer C
+Join Product P
+On C.CustomerID= P.CustomerID
+Where city ="'Illinois'
+And ProductPrice>100
+Or ProductName='flats'
+Order By firstname, lastname
+
+8.
+Select emp1.firstname, emp1.lastname, wage, hiredate, emp2.firstname AS MgrFirstN, emp.lastname AS MgrLastN
+From Employee emp1, Employee emp2
+Where emp1.MgrEmpID= emp2.empID
+
+9.
+Select ProductName, ProductPrice
+From Product P
+Join Order O
+On P.ProductID= O.ProductID
+Order By ProductName
+
+10.
+Select firstname, lastname
+From Employee E
+Join Order O 
+On E.empID= O.empID
+Where Category 'sneakers'
+And ManufacturerName= 'Timberland'
+Order By firstname, lastname
+
+11.
+Select ROUND(avg(shipping), 2) AS AverageShippingCost
+From Sale
+Where Month(SaleDate)=6;
+
+12.
+Select Total
+From Product
+Where CusID=144;
+
+13.
+Select MAX(SalePrice*Quantity) AS LargestItemSale
+From Sale;
+
+14.
+Select Category, Color, MAX(ListPrice) AS MaximumPrice
+From Product
+Group By Category
+
+15.
+Select firstname, lastname, MAX(SalePrice*Quantity) AS MaxAmount
+From Customer C
+Join Sale S
+On C.CusID= S.CusID
+Join SaleItem SI
+On S.SaleID= SI.SaleID
+Where SalePrice>225
+Group By C.CusID, firstname, lastname
+
+16.
+Select MIN(ListPrice) AS MinimumPrice
+From Manufacturer
+Where State='California'
+Or State= ' Washington'
+Group By MinimumPrice, ProductName
+
+17.
+Select S.CusID, S.SaleID, SUM(SI.SalePrice) AS TotalAmt
+From Sale S
+Join SaleItem IS
+On S.SaleID= SI.SaleID
+Group By S.CusID, S.SaleID
+Having TotalAmt>600
+
+

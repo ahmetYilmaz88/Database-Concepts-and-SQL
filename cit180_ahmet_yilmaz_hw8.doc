@@ -1,0 +1,107 @@
+
+I have decided to create a database for a hotel, because I work in a hotel. There are departments, managemrs, and employees, with their titles and salaries in a hotel.
+
+Departments(employeeNr(FK), departmentID(PK), departmentName(FK))
+Managers(employeeNr(PK)(FK),departmentID(FK)
+Employees(employeeNr(PK), empFirstName, empLastName)
+Titles(employeeNr(PK)(FK), title)
+Salaries(employeeNr(PK)(FK), salary)
+
+
+					____	Departments
+						departmentID CHAR(4)
+						departmentName VARCHAR (50)
+					
+Salaries
+employeeNr INT(10)
+salary INT(10)
+
+				Employees
+			_____	employeeNr INT(10)
+			_____	empFirstName VARCHAR(50)
+				empLastName VARCHAR(50)
+
+Titles	
+employeeNr INT(10)
+title VARCHAR(50)	
+					____	Managers
+						employeeNr INT(10)
+						departmentID CHAR(4)
+
+
+
+CREATE TABLE Employees
+(
+employeeNR INT NOT NULL,
+empFirstName VARCHAR(50) NOT NULL,
+empLastName VARCHAR(50) NOT NULL,
+PRIMARY KEY (employeeNr)
+);
+
+
+CREATE TABLE Departments
+(
+employeeNR INT NOT NULL,
+departmentID CHAR(4) NOT NULL,
+departmentName VARCHAR (50) NOT NULL,
+PRIMARY KEY (departmentID)
+FOREIGN KEY (departmentName ) REFERENCES Departments
+FOREIGN KEY (employeeNr) REFERENCES Employees
+);
+
+CREATE TABLE Managers
+(
+employeeNr INT(10) NOT NULL,
+departmentID CHAR (4) NOT NULL,
+PRIMARY KEY (employeeNr)
+FOREIGN KEY (departmentID) REFERENCES Departments
+FOREIGN KEY employeeNr) REFERENCES Employees
+);
+
+
+CREATE TABLE Titles
+(
+employeeNr INT(10) NOT NULL,
+title VARCHAR(50) NOT NULL,
+PRIMARY KEY (employeeNr) 
+FOREIGN KEY (employeeNr) REFERENCES Employees
+);
+
+CREATE TABLE Salaries
+(
+employeeNr INT(10) NOT NULL,
+salary INT NOT NULL,
+PRIMARY KEY (employeeNr) 
+FOREIGN KEY (employeeNr) REFERENCES Employees
+);
+
+insert into Departments values(01, "AA")
+
+insert into Departments values(02, "AB")
+
+insert into Departments values(03, "AC")
+
+insert into Departments values(04, "AD")
+
+insert into Employees values(1, 'Ahmet', "Yilmaz')
+
+insert into Employees values(2, 'John', 'Smith')
+
+insert into Employees values(3, 'Mike', 'Jones')
+
+insert into Employees values(4, 'Scott', 'Kulinsky')
+
+insert into Managers values(01, 001)
+
+insert into Managers values(02, 002)
+
+insert into Managers values(03, 003)
+
+insert into Managers values(04, 004)
+
+insert into Titles values(01,'Server')
+
+insert into Salaries values(01,'1000')
+
+
+

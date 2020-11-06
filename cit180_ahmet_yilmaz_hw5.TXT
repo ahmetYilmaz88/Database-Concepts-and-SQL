@@ -1,0 +1,128 @@
+2.
+DROP TABLE CANDIDATE;
+CREATE TABLE CANDIDATE(SID NUMBER, FNAME VARCHAR2(30),
+LNAME VARCHAR2(30), CREDITS NUMBER, GRADDATE DATE);
+
+3.
+Insert Into CANDIDATE(
+ SID,
+ FNAME,
+ LNAME)
+ 
+   Values (500,
+ 'John',
+ 'Smith');
+
+
+4.
+SELECT * 
+FROM CANDIDATE;
+
+5.
+Insert Into CANDIDATE(
+ FNAME)
+ 
+   Values ('AHMET');
+
+
+6.
+SELECT * 
+FROM CANDIDATE;
+
+7.
+Update CANDIDATE
+   SET CREDITS = CREDITS *0.2;
+WHERE LNAME = 'Jones'
+SELECT * 
+FROM CANDIDATE;
+
+8.
+SELECT * 
+From CANDIDATE;
+Where GRADDATE > '2015-01-01';
+
+9.
+DROP TABLE CANDIDATE cascade constraints;
+CREATE TABLE CANDIDATE_COPY
+DROP TABLE customers cascade constraints;
+CREATE TABLE customers
+(
+ customer_id NUMBER NOT NULL,
+ customer_first_name VARCHAR2(50),
+ customer_last_name VARCHAR2(50) NOT NULL,
+ customer_address VARCHAR2(255) NOT NULL,
+ customer_city VARCHAR2(50) NOT NULL,
+ customer_state CHAR(2) NOT NULL,
+ customer_zip VARCHAR2(20) NOT NULL,
+ customer_phone VARCHAR2(30) NOT NULL,
+ customer_fax VARCHAR2(30),
+ CONSTRAINT customers_pk
+ PRIMARY KEY (customer_id)
+);
+DROP TABLE orders cascade constraints;
+CREATE TABLE orders
+(
+ order_id NUMBER NOT NULL,
+ customer_id NUMBER NOT NULL,
+ order_date DATE NOT NULL,
+ shipped_date DATE,
+ CONSTRAINT orders_pk
+ PRIMARY KEY (order_id),
+ CONSTRAINT orders_fk_customers
+ FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
+);
+INSERT INTO customers
+(customer_id,customer_first_name,customer_last_name,customer_address,customer_
+city,customer_state,customer_zip,customer_phone,customer_fax)
+VALUES (1,'Korah','Blanca','1555 W Lane
+Ave','Columbus','OH','43221','6145554435','6145553928');
+INSERT INTO customers 
+CIT180-Assignment 5 – SQL – chapter 2 Page 4
+(customer_id,customer_first_name,customer_last_name,customer_address,customer_
+city,customer_state,customer_zip,customer_phone,customer_fax)
+VALUES (2,'Yash','Randall','11 E Rancho Madera
+Rd','Madison','WI','53707','2095551205','2095552262');
+INSERT INTO customers
+(customer_id,customer_first_name,customer_last_name,customer_address,customer_
+city,customer_state,customer_zip,customer_phone,customer_fax)
+VALUES (3,'Johnathon','Millerton','60 Madison Ave','New
+York','NY','10010','2125554800','NULL');
+INSERT INTO orders (order_id,customer_id,order_date,shipped_date) VALUES
+(19,1,TO_DATE('23-OCT-12','DD-MON-RR'),TO_DATE('28-OCT-12','DD-MONRR'));
+INSERT INTO orders (order_id,customer_id,order_date,shipped_date) VALUES
+(45,2,TO_DATE('25-NOV-12','DD-MON-RR'),TO_DATE('30-NOV-12','DD-MONRR'));
+
+10.
+SELECT *
+
+FROM customers c
+JOIN orders
+ o
+ON o.orders_id = c.customers_id
+WHERE c.customer_first_name AND c.customer_last_name AND c.customer_phone AND c.customer_state
+AND o.order_date AND o.shipped_date
+
+11.
+UPDATE customers
+
+ SET customer_state = 'NV'
+
+WHERE customer_id = 1 OR 3;
+
+SELECT *
+
+FROM customers;
+
+
+12.
+DELETE
+FROM orders
+WHERE order_id = 45;
+SELECT *
+
+FROM orders;
+
+
+13.
+SELECT * 
+FROM orders;
